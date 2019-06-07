@@ -1,3 +1,12 @@
+buildscript {
+    ext {
+        groovyAllVersion = '2.5.7'
+        spockCoreVersion = '1.3-groovy-2.5'
+        byteBudyVersion = '1.9.13'
+        objenesisVersion = '3.0.1'
+    }
+}
+
 plugins {
     id 'groovy'
 }
@@ -10,6 +19,9 @@ repositories {
 }
 
 dependencies {
-    compile 'org.codehaus.groovy:groovy-all:2.3.11'
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile "org.codehaus.groovy:groovy-all:${groovyAllVersion}"
+
+    testCompile "org.spockframework:spock-core:${spockCoreVersion}"
+    testRuntime "net.bytebuddy:byte-buddy:${byteBudyVersion}"
+    testRuntime "org.objenesis:objenesis:${objenesisVersion}"
 }
