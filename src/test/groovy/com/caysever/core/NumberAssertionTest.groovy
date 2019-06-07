@@ -8,7 +8,7 @@ class NumberAssertionTest extends Specification {
 
     void "should assert numbers"() {
         expect:
-        assertion(actual)."$assertion"(expected)
+        new NumberAssertion(actual)."$assertion"(expected)
 
         where:
         actual                   | expected                 | assertion
@@ -32,7 +32,7 @@ class NumberAssertionTest extends Specification {
 
     void "should assert numbers with no arg"() {
         expect:
-        assertion(actual)."$assertion"()
+        new NumberAssertion(actual)."$assertion"()
 
         where:
         actual | assertion
