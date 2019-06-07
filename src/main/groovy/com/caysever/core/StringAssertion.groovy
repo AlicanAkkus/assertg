@@ -8,63 +8,78 @@ class StringAssertion extends Assertion {
         this.string = string
     }
 
-    boolean eq(String string) {
-        this.string == string
+    StringAssertion eq(String string) {
+        assert this.string == string
+        this
     }
 
-    boolean size(Integer size) {
-        this.string.length() == size
+    StringAssertion size(Integer size) {
+        assert nn() && this.string.length() == size
+        this
     }
 
-    boolean starts(String s) {
-        this.string.startsWith(s)
+    StringAssertion starts(String s) {
+        assert this.string.startsWith(s)
+        this
     }
 
-    boolean ends(String s) {
-        this.string.endsWith(s)
+    StringAssertion ends(String s) {
+        assert this.string.endsWith(s)
+        this
     }
 
-    boolean contains(String s) {
-        this.string.contains(s)
+    StringAssertion contains(String s) {
+        assert this.string.contains(s)
+        this
     }
 
-    boolean contains(List<String> strings) {
-        strings.any { it -> this.string.contains(it) }
+    StringAssertion contains(List<String> strings) {
+        assert strings.any { it -> this.string.contains(it) }
+        this
     }
 
-    boolean notContains(String s) {
-        !contains(s)
+    StringAssertion notContains(String s) {
+        assert (!this.string.contains(s))
+        this
     }
 
-    boolean notContains(List<String> strings) {
-        !contains(strings)
+    StringAssertion notContains(List<String> strings) {
+        assert (!strings.any { it -> this.string.contains(it) })
+        this
     }
 
-    boolean nn() {
-        this.string != null
+    StringAssertion nn() {
+        assert this.string != null
+        this
     }
 
-    boolean isNotNull() {
-        nn()
+    StringAssertion isNotNull() {
+        assert nn()
+        this
     }
 
-    boolean isNull() {
-        !nn()
+    StringAssertion isNull() {
+        assert this.string == null
+        this
     }
 
-    boolean isEmpty() {
-        nn() && this.string.length() == 0
+    StringAssertion isEmpty() {
+        assert nn() && this.string.length() == 0
+        this
     }
 
-    boolean isNotEmpty() {
-        nn() && this.string.length() > 0
+    StringAssertion isNotEmpty() {
+        assert nn() && this.string.length() > 0
+        this
     }
 
-    boolean isBlank() {
-        nn() && this.string.replace(" ", "").length() == 0
+    StringAssertion isBlank() {
+        assert nn() && this.string.replace(" ", "").length() == 0
+        this
     }
 
-    boolean isNotBlank() {
-        nn() && this.string.replace(" ", "").length() > 0
+    StringAssertion isNotBlank() {
+        assert nn() && this.string.replace(" ", "").length() > 0
+        this
     }
 }

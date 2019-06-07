@@ -34,4 +34,19 @@ class StringAssertionTest extends Specification {
         "  "       | "isBlank"
         " alican " | "isNotBlank"
     }
+
+    void "should assert strings with chain"() {
+        given:
+        def name = "alican"
+
+        when:
+        def assertion = new StringAssertion(name)
+
+        then:
+        assertion.isNotBlank()
+                .isNotEmpty()
+                .size(6)
+                .eq("alican")
+                .starts("ali")
+    }
 }
